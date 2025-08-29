@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Logic Science Masterclass</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+  body {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #001f3f);
+    margin: 0;
+    padding: 0;
+    color: #f1f5f9;
+  }
+
+  nav {
+    background-color: #1e293b;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+  }
+
+  nav a {
+    color: #38bdf8;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  nav a:hover {
+    text-shadow: 0 0 10px #22d3ee;
+    color: #22d3ee;
+  }
+
+  h2 {
+    text-align: center;
+    color: #38bdf8;
+    margin: 20px 0;
+    font-weight: 700;
+    text-shadow: 0 0 8px #22d3ee, 0 0 16px #00e0ff;
+  }
+
+  .profile {
+    text-align: center;
+    padding: 30px 20px 10px;
+  }
+
+  .profile img {
+    width: 250px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #00e0ff, 0 0 40px #22d3ee;
+    transition: 0.5s;
+  }
+
+  .profile img:hover {
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 0 25px #00ffff, 0 0 50px #22d3ee, 0 0 75px #3cff00;
+  }
+
+  .scroll-section {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 20px 0;
+    margin: 30px 10px;
+    background-color: #1e293b;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,255,255,0.2);
+  }
+
+  .scroll-content {
+    display: inline-block;
+    animation: scrollLeft 25s linear infinite;
+  }
+
+  .box {
+    display: inline-block;
+    background: linear-gradient(145deg, #22d3ee, #0ea5e9);
+    color: #0f172a;
+    padding: 16px 24px;
+    margin: 0 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 0 12px rgba(56,189,248,0.7);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+
+  .box:hover {
+    transform: scale(1.15) rotate(-2deg);
+    box-shadow: 0 0 20px #00e0ff, 0 0 40px #22d3ee, 0 0 60px #3cff00;
+  }
+
+  @keyframes scrollLeft {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #0f172a;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px 0;
+    color: white;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+  }
+
+  .bottom-nav a {
+    color: #38bdf8;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .bottom-nav a:hover {
+    color: #22d3ee;
+    text-shadow: 0 0 10px #00e0ff;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="material.html"><i class="fas fa-book"></i> Material</a>
+  <a href="bot.html"><i class="fas fa-robot"></i> Chatbot</a>
+</nav>
+
+<h2>About Page</h2>
+
+<div class="profile">
+  <img src="Logic_resized.jpg" alt="Black Logic - Developer Image" />
+  <h2>Mthokozisi Mathebula<br><span style="color:#22d3ee;">aka Black Logic</span></h2>
+</div>
+
+<h2>🧠 Skills</h2>
+<div class="scroll-section">
+  <div class="scroll-content">
+    <div class="box">Python</div>
+    <div class="box">JavaScript</div>
+    <div class="box">HTML & CSS</div>
+    <div class="box">Tailwind CSS</div>
+    <div class="box">React Basics</div>
+    <div class="box">Machine Learning</div>
+    <div class="box">AI Bots</div>
+    <div class="box">Git & GitHub</div>
+    <div class="box">Web App Design</div>
+    <div class="box">Game Development</div>
+    <div class="box">API Integration</div>
+  </div>
+</div>
+
+<h2>🎓 Qualifications</h2>
+<div class="scroll-section">
+  <div class="scroll-content">
+    <div class="box">72+ Certificates</div>
+    <div class="box">Microsoft AI Fundamentals</div>
+    <div class="box">Microsoft ML & Copilot</div>
+    <div class="box">Sololearn Python (3x)</div>
+    <div class="box">HTML, CSS, JavaScript</div>
+    <div class="box">Java & SQL</div>
+    <div class="box">Responsive Web Dev</div>
+    <div class="box">AI & ML Tools</div>
+    <div class="box">App Deployment</div>
+  </div>
+</div>
+
+<h2>🚀 Projects</h2>
+<div class="scroll-section">
+  <div class="scroll-content">
+    <div class="box">BlackLogic AI Portfolio</div>
+    <div class="box">KasiTaxi App</div>
+    <div class="box">BeautyLogic Store</div>
+    <div class="box">Logic Science LMS</div>
+    <div class="box">FutureAI Chatbot</div>
+    <div class="box">NewGen Innovators</div>
+    <div class="box">QuizHub AI</div>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+  <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+  <a href="feedback.html"><i class="fas fa-comment-dots"></i> Feedback</a>
+</nav>
+
+</body>
+</html>

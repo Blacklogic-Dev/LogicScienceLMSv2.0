@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade 12 Mathematics Quiz | Logic Science Masterclass</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #000428, #004e92);
+      color: white;
+      padding: 20px;
+    }h1, h2, h3 {
+  text-align: center;
+  color: #22c55e;
+}
+
+.quiz-box {
+  background: #0f172a;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
+}
+
+.question {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.options label {
+  display: block;
+  margin: 8px 0;
+  padding: 10px;
+  background: #1e293b;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background-color: #22c55e;
+  color: black;
+  cursor: pointer;
+}
+
+.result {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  border-top: 2px solid #22c55e;
+}
+
+.badge {
+  font-size: 32px;
+  margin: 10px 0;
+}
+
+.careers {
+  margin-top: 15px;
+}
+
+.careers ul {
+  list-style: none;
+  padding: 0;
+}
+
+.careers li::before {
+  content: "\1F393 ";
+}
+
+  </style>
+</head>
+<body>
+  <h1>📐 Grade 12 Mathematics Quiz</h1>
+  <div class="quiz-box">
+    <div id="quiz">
+      <div id="question" class="question"></div>
+      <div class="options" id="options"></div>
+      <button class="btn" onclick="nextQuestion()">Next</button>
+    </div>
+    <div id="result" class="result" style="display: none;"></div>
+  </div>  <script>
+    const quizData = [
+      { question: "What is the derivative of f(x) = x^2?", options: ["2x", "x", "x^2", "1"], answer: "2x" },
+      { question: "∫ x dx = ?", options: ["x^2", "x^2/2 + C", "2x + C", "x/2 + C"], answer: "x^2/2 + C" },
+      { question: "What is the limit of (1/x) as x → ∞?", options: ["1", "0", "∞", "Undefined"], answer: "0" },
+      { question: "Which one is a quadratic equation?", options: ["x^2 + 2x + 1 = 0", "x + 2 = 0", "2x = 4", "x^3 = 8"], answer: "x^2 + 2x + 1 = 0" },
+      { question: "What does P(A ∩ B) represent in probability?", options: ["P of A or B", "P of A given B", "P of A and B", "P of not A"], answer: "P of A and B" },
+      { question: "Find the derivative of f(x) = 3x^3.", options: ["9x^2", "6x^2", "3x^2", "x^3"], answer: "9x^2" },
+      { question: "Mean of 2, 4, 6, 8, 10?", options: ["5", "6", "7", "8"], answer: "6" },
+      { question: "How many solutions does x^2 + 1 = 0 have in real numbers?", options: ["1", "0", "2", "Infinite"], answer: "0" },
+      { question: "Which formula calculates the area under a curve?", options: ["Derivative", "Integral", "Logarithm", "Limit"], answer: "Integral" },
+      { question: "What is the probability of heads on a fair coin?", options: ["1/2", "1/4", "1", "0"], answer: "1/2" }
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      const q = quizData[current];
+      document.getElementById("question").innerText = `${current + 1}. ${q.question}`;
+      document.getElementById("options").innerHTML = q.options.map(opt => `
+        <label><input type="radio" name="option" value="${opt}"> ${opt}</label>
+      `).join('');
+    }
+
+    function nextQuestion() {
+      const selected = document.querySelector('input[name="option"]:checked');
+      if (!selected) return alert("Please select an answer!");
+
+      if (selected.value === quizData[current].answer) score++;
+      current++;
+
+      if (current < quizData.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById("quiz").style.display = "none";
+      const badge = score >= 9 ? "🥇 Gold" : score >= 7 ? "🥈 Silver" : score >= 5 ? "🥉 Bronze" : "❌ No Badge";
+      let careerHTML = "";
+
+      if (score >= 5) {
+        careerHTML = `
+          <div class="careers">
+            <h3>🎓 Suggested Careers:</h3>
+            <ul>
+              <li>Engineer</li>
+              <li>Actuary</li>
+              <li>Data Scientist</li>
+              <li>Statistician</li>
+            </ul>
+          </div>
+        `;
+      }
+
+      document.getElementById("result").style.display = "block";
+      document.getElementById("result").innerHTML = `
+        <h2>Quiz Completed!</h2>
+        <p>Your Score: <strong>${score} / 10</strong></p>
+        <p class="badge">🏅 ${badge}</p>
+        ${careerHTML}
+        <br><br>
+        <a class="btn" href="grade12-math-quiz.html">Try Again</a>
+        <a class="btn" href="material.html">Back to Material</a>
+      `;
+    }
+
+    loadQuestion();
+  </script></body>
+</html>

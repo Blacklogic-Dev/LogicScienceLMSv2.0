@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 11 Study Bot | Logic Science Masterclass</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: linear-gradient(to bottom, #000428, #004e92); color: white; }
+    header { text-align: center; padding: 20px; }
+    .logo { width: 120px; height: auto; display: block; margin: 0 auto 10px; }
+    h1 { color: #22c55e; }
+    .description { text-align: center; color: #f1f1f1; font-weight: bold; }
+    .subject-buttons { display: flex; justify-content: center; margin: 20px 0; flex-wrap: wrap; gap: 10px; }
+    .subject-buttons button { padding: 12px 20px; font-weight: bold; border-radius: 10px; border: none; cursor: pointer; background: #22c55e; color: black; transition: 0.3s; }
+    .subject-buttons button:hover { background: #16a34a; }
+    .chat-container { max-width: 900px; margin: 20px auto; padding: 20px; background-color: rgba(255, 255, 255, 0.05); border-radius: 12px; }
+    .chat-box { max-height: 500px; overflow-y: auto; margin-bottom: 15px; }
+    .chat-message { margin: 10px 0; padding: 10px; border-radius: 10px; word-wrap: break-word; }
+    .user-message { background-color: #1e293b; text-align: right; }
+    .bot-message { background-color: #22c55e; color: black; text-align: left; }
+    .suggestion-button { display: block; width: 100%; margin: 5px 0; padding: 10px; border-radius: 10px; border: none; font-weight: bold; background: #0ea5e9; color: black; cursor: pointer; text-align: left; }
+    .suggestion-button:hover { background: #0284c7; }
+    .exam-button { display: block; margin: 30px auto 0; padding: 15px 30px; background: linear-gradient(90deg, #22c55e, #0ea5e9); color: black; font-size: 20px; font-weight: bold; text-align: center; border-radius: 12px; text-decoration: none; box-shadow: 0 0 20px #22c55e; width: 90%; max-width: 400px; cursor: pointer; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 20px #22c55e; } 50% { box-shadow: 0 0 40px #0ea5e9; } }
+    .formula { font-family: monospace; background: rgba(0,0,0,0.2); padding: 5px 10px; border-radius: 6px; margin: 5px 0; display: inline-block; }
+    .nav-bar { display: flex; justify-content: center; background-color: #0f172a; padding: 15px; }
+    .nav-bar a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <nav class="nav-bar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="material.html"><i class="fas fa-book"></i> Material</a>
+    <a href="futureai.html"><i class="fas fa-brain"></i> Study Bot</a>
+  </nav>
+
+  <header>
+    <img src="Free.png" alt="FutureAI Logo" class="logo">
+    <h1>Grade 11 Study Bot</h1>
+    <p class="description">Mathematics, Physical Sciences & Life Sciences – Challenge yourself!</p>
+  </header>
+
+  <div class="subject-buttons">
+    <button onclick="loadCategory('Math')">📐 Mathematics</button>
+    <button onclick="loadCategory('Physics')">🧪 Physical Sciences</button>
+    <button onclick="loadCategory('Life')">🧬 Life Sciences</button>
+    <button onclick="startChallenge()">⚡ Challenge Mode</button>
+  </div>
+
+  <div class="chat-container">
+    <div id="chatBox" class="chat-box">
+      <div class="chat-message bot-message">👋 Welcome! Choose a subject or start a challenge mode to interact.</div>
+    </div>
+    <div id="suggestionButtons"></div>
+  </div>
+
+  <a href="https://www.education.gov.za/Curriculum/NationalSeniorCertificate(NSC)Examinations/NSCPastExaminationpapers.aspx" class="exam-button" target="_blank">
+    📝 Past Papers & Memos (Dept of Education)
+  </a>
+
+  <script>
+    const chatBox = document.getElementById("chatBox");
+    const suggestionBox = document.getElementById("suggestionButtons");
+
+    function appendUser(message) {
+      const div = document.createElement("div");
+      div.className = "chat-message user-message";
+      div.textContent = message;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function appendBot(message) {
+      const div = document.createElement("div");
+      div.className = "chat-message bot-message";
+      div.innerHTML = message;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    const topics = {
+      Math: [
+        ["Quadratic Formula", "The solution of ax² + bx + c = 0 is <span class='formula'>x = (-b ± √(b²-4ac)) / 2a</span>."],
+        ["Pythagoras Theorem", "In a right triangle: <span class='formula'>a² + b² = c²</span>."],
+        ["Trigonometry Ratio", "sin θ = opposite/hypotenuse, cos θ = adjacent/hypotenuse, tan θ = opposite/adjacent."],
+      ],
+      Physics: [
+        ["Newton's 2nd Law", "<span class='formula'>F = ma</span>"],
+        ["Kinematics Equation", "<span class='formula'>s = ut + 1/2 at²</span>"],
+        ["Ohm's Law", "<span class='formula'>V = IR</span>"],
+      ],
+      Life: [
+        ["Photosynthesis", "<span class='formula'>6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</span>"],
+        ["DNA Structure", "DNA is a double helix formed by nucleotides."],
+        ["Mendel's Law", "Genes are inherited according to dominant and recessive patterns."],
+      ]
+    };
+
+    function loadCategory(subject) {
+      suggestionBox.innerHTML = "";
+      appendBot("Here are suggested questions for " + subject + ":");
+
+      topics[subject].forEach(([q, a]) => {
+        const btn = document.createElement("button");
+        btn.className = "suggestion-button";
+        btn.innerHTML = q;
+        btn.onclick = () => {
+          appendUser(q);
+          setTimeout(() => appendBot(a + "<br><br>Click 'Past Papers & Memos' for more info."), 700);
+        };
+        suggestionBox.appendChild(btn);
+      });
+    }
+
+    function startChallenge() {
+      suggestionBox.innerHTML = "";
+      appendBot("⚡ Challenge Mode activated! The bot will ask 3 questions with 2 answers. Choose wisely!");
+
+      const subjects = Object.keys(topics);
+      let botQuestions = [];
+      subjects.forEach(subject => {
+        botQuestions = botQuestions.concat(topics[subject].map(q => [subject, ...q]));
+      });
+
+      let botIndex = 0;
+      function askBotQuestion() {
+        if (botIndex >= 3) { 
+          userAsksBot(); 
+          return;
+        }
+
+        const [subject, question, answer] = botQuestions[Math.floor(Math.random()*botQuestions.length)];
+        // Create two options, answer + another from topic
+        const secondOption = botQuestions[Math.floor(Math.random()*botQuestions.length)][2];
+        const options = [answer, secondOption].sort(() => Math.random()-0.5); // shuffle
+
+        appendBot(`<b>${subject} Question:</b> ${question}`);
+        suggestionBox.innerHTML = "";
+        options.forEach(opt => {
+          const btn = document.createElement("button");
+          btn.className = "suggestion-button";
+          btn.textContent = opt;
+          btn.onclick = () => {
+            appendUser(opt);
+            appendBot(opt === answer ? "✅ Correct!" : "❌ Wrong! Correct answer: " + answer);
+            botIndex++;
+            setTimeout(askBotQuestion, 700);
+          };
+          suggestionBox.appendChild(btn);
+        });
+      }
+
+      function userAsksBot() {
+        appendBot("Now it's your turn! Ask the bot 3 questions. The bot may answer correctly or incorrectly.");
+        suggestionBox.innerHTML = "";
+
+        for (let i=1; i<=3; i++){
+          const btn = document.createElement("button");
+          btn.className = "suggestion-button";
+          btn.textContent = `Ask Bot Question ${i}`;
+          btn.onclick = () => {
+            appendUser(`Bot Question ${i}`);
+            const correct = Math.random() > 0.5;
+            appendBot(correct ? "Bot Answer: ✅ Correct!" : "Bot Answer: ❌ Wrong, learn from it!");
+          };
+          suggestionBox.appendChild(btn);
+        }
+      }
+
+      askBotQuestion();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Grade 11 Materials | Logic Science Masterclass</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #000428, #004e92);
+  color: white;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #0f172a;
+  padding: 12px 0;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px 16px 40px;
+}
+.subject-card {
+  background-color: #0f172a;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.subject-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px #22c55e;
+}
+.subject-card img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.subject-card h3 {
+  margin: 10px 0;
+  color: #22c55e;
+}
+.subject-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+.subject-card ul li {
+  margin: 5px 0;
+}
+.subject-card a {
+  display: inline-block;
+  margin: 6px 5px;
+  padding: 8px 16px;
+  background: linear-gradient(90deg,#22c55e,#0ea5e9);
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+.subject-card a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #22c55e;
+}
+.bottom-button {
+  display: block;
+  margin: 40px auto 60px;
+  padding: 18px 30px;
+  background: linear-gradient(90deg,#22c55e,#0ea5e9);
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 25px #22c55e;
+  transition: 0.3s;
+}
+.bottom-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px #22c55e;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="material.html"><i class="fas fa-book"></i> Material</a>
+  <a href="bot.html"><i class="fas fa-robot"></i> Chatbot</a>
+</nav>
+
+<h2 style="text-align:center; margin:20px 0; color:#22c55e;">Grade 11 Materials</h2>
+
+<div class="subject-grid">
+  <!-- Mathematics -->
+  <div class="subject-card">
+    <img src="Grade11m.jpg" alt="Mathematics">
+    <h3>Mathematics</h3>
+    <ul>
+      <li>Quadratic Equations</li>
+      <li>Functions & Graphs</li>
+      <li>Trigonometry</li>
+    </ul>
+    <a href="grade11m.html"><i class="fas fa-book"></i> Notes</a>
+    <a href="https://mathsatsharp.co.za/grade-10-maths-videos/" target="_blank"><i class="fas fa-play-circle"></i> Watch Videos</a>
+  </div>
+
+  <!-- Physical Sciences -->
+  <div class="subject-card">
+    <img src="Grade11p.jpg" alt="Physical Sciences">
+    <h3>Physical Sciences</h3>
+    <ul>
+      <li>Kinematics</li>
+      <li>Work, Energy & Power</li>
+      <li>Electricity</li>
+    </ul>
+    <a href="grade11p.html"><i class="fas fa-book"></i> Notes</a>
+    <a href="https://youtube.com/@thandisayensi?si=IKNW0BLY6GwKSb3X" target="_blank"><i class="fas fa-play-circle"></i> Watch Videos</a>
+  </div>
+
+  <!-- Life Sciences -->
+  <div class="subject-card">
+    <img src="Grade11L.jpg" alt="Life Sciences">
+    <h3>Life Sciences</h3>
+    <ul>
+      <li>Genetics</li>
+      <li>Evolution</li>
+      <li>Human Anatomy</li>
+    </ul>
+    <a href="grade11L.html"><i class="fas fa-book"></i> Notes</a>
+    <a href="https://youtube.com/@missvandeventerslifescienc6334?si=mn658LUwRvTLeNYI" target="_blank"><i class="fas fa-play-circle"></i> Watch Videos</a>
+  </div>
+</div>
+
+<!-- Single Big Exam & Memo Button -->
+<a href="https://www.education.gov.za/Curriculum/NationalSeniorCertificate(NSC)Examinations/NSCPastExaminationpapers.aspx" class="bottom-button"><i class="fas fa-file-alt"></i> Exam & Memo — Offered by Department of Education, embedded to Logic Science Masterclass</a>
+
+</body>
+</html>
